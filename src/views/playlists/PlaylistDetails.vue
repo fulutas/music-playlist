@@ -19,8 +19,9 @@
             </div>
         </div>
 
-        <AddSong :openModal="openaddMusic" @closeModal="openaddMusic = $event" v-if="ownership && openaddMusic" :playlist="playlist"/>
-
+        <transition name="fade">
+            <AddSong :openModal="openaddMusic" @closeModal="openaddMusic = $event" v-if="ownership && openaddMusic" :playlist="playlist"/>
+        </transition>
         <!-- song list -->
         <div class="song-list">
             <div v-if="!playlist.songs.length">Bu çalma listesine henüz bir şarkı eklenmedi.</div>
@@ -28,7 +29,6 @@
                 <div class="details">
                     <h3>{{ song.title }}</h3>
                     <p>{{ song.artist }} </p>
-                    {{ song.id }}
                 </div>
                 <button v-if="ownership" @click="handleSongDelete(song.id)">Sil</button>
             </div>
@@ -179,4 +179,11 @@ export default {
     opacity: 0.8;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -1,4 +1,5 @@
 <template>
+
   <div class="add-song" ref="songWrap" @click="checkClick">
       <form v-if="openModal" @submit.prevent="handleSubmit">
           <h4>Müzik ekle</h4>
@@ -10,6 +11,7 @@
           </div>
       </form>
   </div>
+
 </template>
 
 <script>
@@ -108,5 +110,6 @@ export default {
     background-color: var(--warning);
     color: white;
 }
+
 
 </style>

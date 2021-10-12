@@ -1,4 +1,9 @@
-# music-playlist-app
+# Music playlist app
+
+### Demo
+```
+https://music-playlist-app-c3924.web.app/
+```
 
 ## Project setup
 ```

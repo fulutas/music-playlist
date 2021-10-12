@@ -1,0 +1,11 @@
+// Firebase Storage Kuralları
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /covers/{userId}/{document=**} {
+      allow read, create: if request.auth != null; // login olmayan kullanıcı okuma ve oluşturma yapamaz.
+      allow delete: if request.auth.uid == userId // login olan kullanıcı uid ile covers/userId ile eşleşirse siler.
+    }
+  }
+}

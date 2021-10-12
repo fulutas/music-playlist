@@ -1,0 +1,11 @@
+// Firebase firestore Kuralları
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /playlists/{docId} {
+      allow read, create: if request.auth != null // login olmayan kullanıcı okuma ve oluşturma yapamaz.
+      allow delete, update: if request.auth.uid == resource.data.userId // login olan kullanıcı uid ile playlists document içindeki userId ile eşleşirse siler.
+    }
+  }
+}
